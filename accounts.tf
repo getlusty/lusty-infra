@@ -1,5 +1,5 @@
 resource "yandex_iam_service_account" "lusty-profile-sa" {
-  name      = "lusty-profile-sa"
+  name = "lusty-profile-sa"
 }
 
 resource "yandex_resourcemanager_folder_iam_member" "lusty-profile-sa_permission_storage-editor" {
