@@ -7,9 +7,9 @@ terraform {
   required_version = ">= 0.13"
 }
 
-//provider "yandex" {
-//  zone = "<зона доступности по умолчанию>"
-//}
+provider "yandex" {
+  zone = "ru-central1-a"
+}
 
 # An example resource that does nothing.
 resource "null_resource" "example" {
