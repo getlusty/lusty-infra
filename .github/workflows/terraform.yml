@@ -57,8 +57,6 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     environment: production
-    env:
-      YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -76,6 +74,8 @@ jobs:
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Yandex.Cloud terraform provider
+        env:
+          YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
         run: |
           ls
           mv .terraformrc ~/.terraformrc
