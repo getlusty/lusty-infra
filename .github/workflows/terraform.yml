@@ -76,9 +76,7 @@ jobs:
       # Set up Yandex.Cloud credentials
       - name: Set up Yandex.Cloud credentials
         run: |
-          echo "${{ secrets.YC_SA_KEY }}" > key.json
-          echo "${{ secrets.YC_SA_KEY }}"
-          cat key.json 
+          echo '${{ secrets.YC_SA_KEY }}' > key.json
           /opt/yc/bin/yc config set service-account-key key.json
           /opt/yc/bin/yc config set cloud-id lusty-cloud
           /opt/yc/bin/yc config set folder-id prod
