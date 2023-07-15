@@ -81,8 +81,8 @@ jobs:
           /opt/yc/bin/yc config set cloud-id lusty-cloud
           /opt/yc/bin/yc config set folder-id prod
           export YC_TOKEN=$(/opt/yc/bin/yc iam create-token)
-          export YC_CLOUD_ID=$(/opt/yc/bin/yc config get lusty-cloud)
-          export YC_FOLDER_ID=$(/opt/yc/bin/yc config get prod)
+          export YC_CLOUD_ID=$(/opt/yc/bin/yc config get cloud-id)
+          export YC_FOLDER_ID=$(/opt/yc/bin/yc config get folder-id)
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
