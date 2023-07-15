@@ -76,6 +76,8 @@ jobs:
       - name: Setup Yandex.Cloud terraform provider
         env:
           YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
+          YC_CLOUD_ID: ${{ vars.YC_CLOUD_ID }}
+          YC_FOLDER_ID: ${{ vars.YC_FOLDER_ID }}
         run: |
           ls
           mv .terraformrc ~/.terraformrc
