@@ -72,6 +72,7 @@ jobs:
       - name: Install Yandex.Cloud CLI
         run: |
           curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          source "/home/runner/.bashrc"
 
       # Set up Yandex.Cloud credentials
       - name: Set up Yandex.Cloud credentials
