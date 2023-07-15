@@ -76,10 +76,11 @@ jobs:
       # Set up Yandex.Cloud credentials
       - name: Set up Yandex.Cloud credentials
         run: |
+          ls /opt/yc
           echo "${{ secrets.YC_SA_KEY }}" > key.json
-          /opt/yc config set service-account-key key.json
-          /opt/yc config set cloud-id lusty-cloud
-          /opt/yc config set folder-id prod
+          /opt/yc/yc config set service-account-key key.json
+          /opt/yc/yc config set cloud-id lusty-cloud
+          /opt/yc/yc config set folder-id prod
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
