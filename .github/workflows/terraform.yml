@@ -68,22 +68,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Install Yandex.Cloud CLI (yc)
-      - name: Install Yandex.Cloud CLI
-        run: |
-          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -i /opt/yc -n
-
-      # Set up Yandex.Cloud credentials
-      - name: Set up Yandex.Cloud credentials
-        run: |
-          echo '${{ secrets.YC_SA_KEY }}' > key.json
-          /opt/yc/bin/yc config set service-account-key key.json
-          /opt/yc/bin/yc config set cloud-id lusty-cloud
-          /opt/yc/bin/yc config set folder-id prod
-          export YC_TOKEN=$(/opt/yc/bin/yc iam create-token)
-          export YC_CLOUD_ID=$(/opt/yc/bin/yc config get cloud-id)
-          export YC_FOLDER_ID=$(/opt/yc/bin/yc config get folder-id)
-
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
