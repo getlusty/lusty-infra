@@ -19,3 +19,7 @@ terraform {
 provider "yandex" {
   zone = "ru-central1-a"
 }
+
+locals {
+  folder_id = "b1grpv5m2250175iqte9"
+}
