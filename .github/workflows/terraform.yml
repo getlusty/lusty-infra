@@ -79,7 +79,12 @@ jobs:
 
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
-        run: terraform init
+        env:
+          YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
+#          YC_SA_ACCESS_KEY: ${{ secrets.YC_SA_ACCESS_KEY }}
+#          YC_SA_SECRET_KEY: ${{ secrets.YC_SA_SECRET_KEY }}
+#        run: terraform init -backend-config="access_key=$YC_SA_ACCESS_KEY" -backend-config="secret_key=$YC_SA_SECRET_KEY"
+        run: terraform init -backend-config="shared_credentials_file=$YC_SERVICE_ACCOUNT_KEY_FILE"
 
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format
