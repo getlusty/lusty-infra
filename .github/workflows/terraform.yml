@@ -74,14 +74,8 @@ jobs:
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Yandex.Cloud terraform provider
-        env:
-          YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
-          YC_CLOUD_ID: ${{ vars.YC_CLOUD_ID }}
-          YC_FOLDER_ID: ${{ vars.YC_FOLDER_ID }}
         run: |
-          ls
           mv .terraformrc ~/.terraformrc
-          echo '$YC_SERVICE_ACCOUNT_KEY_FILE'
 
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
@@ -93,6 +87,10 @@ jobs:
 
       # Generates an execution plan for Terraform
       - name: Terraform Plan
+        env:
+          YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SA_KEY }}
+          YC_CLOUD_ID: ${{ vars.YC_CLOUD_ID }}
+          YC_FOLDER_ID: ${{ vars.YC_FOLDER_ID }}
         run: terraform plan -input=false
 
         # On push to "master", build or change infrastructure according to Terraform configuration files
