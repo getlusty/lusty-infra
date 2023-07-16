@@ -4,8 +4,8 @@ resource "yandex_storage_bucket" "lusty-photo" {
   bucket     = "lusty-photo"
 
   anonymous_access_flags {
-    read = true
-    list = false
+    read        = true
+    list        = false
     config_read = false
   }
 }
